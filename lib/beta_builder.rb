@@ -2,9 +2,9 @@ require 'rake/tasklib'
 require 'ostruct'
 require 'fileutils'
 require 'cfpropertylist'
-require 'beta_builder/archived_build'
-require 'beta_builder/deployment_strategies'
-require 'beta_builder/build_output_parser'
+require_relative 'beta_builder/archived_build'
+require_relative 'beta_builder/deployment_strategies'
+require_relative 'beta_builder/build_output_parser'
 
 module BetaBuilder
   class Tasks < ::Rake::TaskLib
@@ -78,7 +78,8 @@ module BetaBuilder
       
       def built_app_path
         if build_dir == :derived
-          "#{derived_build_dir_from_build_output}/#{configuration}-iphoneos/#{app_file_name}"
+          # "#{derived_build_dir_from_build_output}/#{configuration}-iphoneos/#{app_file_name}"
+          "#{derived_build_dir_from_build_output}/#{configuration}/#{app_file_name}"
         else
           "#{build_dir}/#{configuration}-iphoneos/#{app_file_name}"
         end

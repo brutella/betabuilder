@@ -7,8 +7,8 @@ module BetaBuilder
 
     def build_output_dir
       # yes, this is truly horrible, but unless somebody else can find a better way...
-      found = @output.split("\n").grep(/^Validate(.*)\/Xcode\/DerivedData\/(.*)-(.*)/).first
-      if found && found =~ /Validate [\"]?([^\"|$]*)/
+      found = @output.split("\n").grep(/^CodeSign (.*)\/Xcode\/DerivedData\/(.*)-(.*)/).first
+      if found && found =~ /CodeSign [\"]?([^\"|$]*)/
         reference = $1 
       else 
         raise "Cannot parse build_dir from build output."
